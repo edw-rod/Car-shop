@@ -1,13 +1,13 @@
-import products from '../services/products.json'
-import { Products } from '../section/products'
-import Header from '../section/header/Header'
-import { useFilter } from '../services/hooks/useFilter'
-import { useState } from 'react'
-import ModalCarShoping from './ModalCarShoping'
 import CarShopProvider from '../services/context/CarShop'
+import ModalCarShoping from './ModalCarShoping'
+import Header from '../section/header/Header'
+import { Products } from '../section/products'
+import { CircularProgress } from '@nextui-org/react'
+import { useFilter } from '../services/hooks/useFilter'
+import { useProduct } from '../services/hooks/useProduct'
 
 export default function CarShoping () {
-  const [prod] = useState(products)
+  const { prod, Loading } = useProduct()
   const { FilterProducts } = useFilter()
 
   const FilteredProducts = FilterProducts(prod)
@@ -17,7 +17,9 @@ export default function CarShoping () {
       <section className='section'>
         <ModalCarShoping />
         <Header />
-        <Products obj={FilteredProducts} />
+        {Loading
+          ? <div className='flex justify-center'> <CircularProgress size='lg' label='Loading...' /></div>
+          : <Products obj={FilteredProducts} />}
       </section>
     </CarShopProvider>
   )

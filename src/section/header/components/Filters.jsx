@@ -1,10 +1,11 @@
 import { Slider } from '@nextui-org/react'
 import { Select, SelectItem } from '@nextui-org/select'
-import categories from '../../../services/categories.json'
 import { useFilter } from '../../../services/hooks/useFilter'
+import { useElementFilter } from '../../../services/hooks/useElementFilter'
 
 export default function Filters () {
   const { filter, setFilter } = useFilter()
+  const { categories } = useElementFilter()
 
   const hanndledChangePrice = (event) => {
     setFilter(prevState => (
@@ -59,6 +60,7 @@ export default function Filters () {
           variant='underlined'
           labelPlacement='outside'
           label='Categoria'
+          defaultSelectedKeys={['all']}
           onChange={hanndledChangeCategory}
         >
           <SelectItem key='all'>all</SelectItem>
