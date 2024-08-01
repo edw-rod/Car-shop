@@ -1,0 +1,60 @@
+:root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%);
+}
+
+code {
+    font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem;
+
+    .section {
+        width: auto;
+
+        @media (min-width: 960px) {
+            width: 960px;
+        }
+    }
+}
+
+h1 {
+    color: #444141;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.ListProduct {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+
+    list-style: none;
+}
+
+
+
+.card {
+    background-color: rgb(21, 20, 20);
+    height: 25rem;
+    color: aliceblue;
+}
